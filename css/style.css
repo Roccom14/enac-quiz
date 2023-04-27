@@ -1,0 +1,126 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+	background-color: #f5f5f5;
+}
+
+nav {
+    width: 100%;
+	background-color: #007480;
+	color: #fff;
+	height: 80px;
+    display: flex;
+	align-items: center;
+    justify-content: space-around;
+}
+
+.language-selector {
+    justify-self: auto;
+}
+
+nav img {
+	height: 40px;
+    display: flex;
+}
+
+nav a {
+	display: inline-block;
+	padding: 20px;
+	color: #fff;
+	text-decoration: none;
+}
+
+nav a:hover {
+	background-color: #b6c2cc;
+	color: #fff;
+}
+
+.content {
+	padding: 50px;
+    margin: auto;
+}
+
+/* .language-selector {
+    margin: 20px;
+} */
+
+footer {
+	background-color: #007480;
+	color: #fff;
+	padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+	max-width: 1200px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+footer p {
+	margin: 0;
+}
+
+/* Styles pour les écrans plus petits */
+@media only screen and (max-width: 768px) {
+    .navbar {
+        font-size: 16px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    nav {
+		height: auto;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	
+    .navbar-brand {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+      
+    .navbar-nav {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+      
+    .nav-item {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+      
+    .nav-link {
+        text-align: center;
+        padding: 10px;
+    }
+
+	nav img {
+		margin-bottom: 10px;
+	}
+	
+	nav a {
+		display: block;
+		padding: 15px 0;
+	}
+
+    .language-selector {
+        display: flex;
+    }
+
+    .logo {
+        max-height: 40px;
+    }
+
+    footer {
+        font-size: 12px;
+        padding: 10px;
+    }
+}
