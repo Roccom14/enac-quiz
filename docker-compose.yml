@@ -6,12 +6,11 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: i%E%6N4!xUYuBC!@uu6$78aX8
-      MYSQL_DATABASE: enac-quiz
       MYSQL_USER: rocco
       MYSQL_PASSWORD: puzzle-sprung0-donut
     volumes:
       - db_data:/var/lib/mysql
-      - ./sql/enac-quiz.sql:/docker-entrypoint-initdb.d/enac-quiz.sql
+      - ./sql:/docker-entrypoint-initdb.d/enac-quiz.sql
 
   apache:
     image: httpd:latest
@@ -19,7 +18,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./html:/usr/local/apache2/htdocs/
+      - .:/usr/local/apache2/htdocs/
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
@@ -29,7 +28,7 @@ services:
       - "8080:80"
     environment:
       PMA_HOST: mysql
-      MYSQL_ROOT_PASSWORD: your_mysql_root_password
+      MYSQL_ROOT_PASSWORD: i%E%6N4!xUYuBC!@uu6$78aX8
 
 volumes:
   db_data:
