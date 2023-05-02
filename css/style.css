@@ -39,6 +39,12 @@ nav a:hover {
 .content {
 	padding: 50px;
     margin: auto;
+    text-align: center;
+}
+
+table.login {
+    margin-left: auto; 
+    margin-right: auto;
 }
 
 /* .language-selector {
