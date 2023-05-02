@@ -11,7 +11,7 @@ services:
       MYSQL_PASSWORD: puzzle-sprung0-donut
     volumes:
       - db_data:/var/lib/mysql
-      - ./chemin/vers/le/enac-quiz.sql:/docker-entrypoint-initdb.d/enac-quiz.sql
+      - ./sql/enac-quiz.sql:/docker-entrypoint-initdb.d/enac-quiz.sql
 
   apache:
     image: httpd:latest
