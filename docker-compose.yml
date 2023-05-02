@@ -8,6 +8,8 @@ services:
       MYSQL_ROOT_PASSWORD: i%E%6N4!xUYuBC!@uu6$78aX8
       MYSQL_USER: rocco
       MYSQL_PASSWORD: puzzle-sprung0-donut
+    ports:
+      - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
       - ./sql:/docker-entrypoint-initdb.d/enac-quiz.sql
@@ -19,6 +21,7 @@ services:
       - "80:80"
     volumes:
       - .:/usr/local/apache2/htdocs/
+      - ./php:/usr/local/apache2/php/
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
@@ -29,6 +32,14 @@ services:
     environment:
       PMA_HOST: mysql
       MYSQL_ROOT_PASSWORD: i%E%6N4!xUYuBC!@uu6$78aX8
+  
+  php:
+    image: php:latest
+    container_name: php_prod
+    volumes:
+      - ./php:/var/www/html
+    depends_on:
+      - mysql
 
 volumes:
   db_data:

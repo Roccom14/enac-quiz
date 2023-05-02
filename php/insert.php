@@ -10,7 +10,7 @@
         // username => root
         // password => empty
         // database name => staff
-        $conn = mysqli_connect("localhost:8080", "root", "P4ssWord", "enac-quiz");
+        $conn = mysqli_connect("localhost:3306", "root", "i%E%6N4!xUYuBC!@uu6$78aX8", "enac-quiz");
          
         // Check connection
         if($conn === false){
@@ -18,11 +18,10 @@
                 . mysqli_connect_error());
         }
          
-        // Taking all 5 values from the form data(input)
+        // Taking all values from the form data(input)
         $pseudo = $_REQUEST['pseudo'];
          
         // Performing insert query execution
-        // here our table name is college
         $sql = "INSERT INTO session VALUES ('$pseudo')";
          
         if(mysqli_query($conn, $sql)){
