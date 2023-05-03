@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : mysql
--- Généré le : mer. 26 avr. 2023 à 15:23
--- Version du serveur : 8.0.32
--- Version de PHP : 8.1.15
+-- Généré le : mer. 03 mai 2023 à 08:57
+-- Version du serveur : 8.0.33
+-- Version de PHP : 8.1.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -198,6 +198,7 @@ CREATE TABLE `session` (
   `id_session` int NOT NULL,
   `pseudo` varchar(32) NOT NULL,
   `score` int NOT NULL,
+  `difficulty` int NOT NULL,
   `quest_01` int NOT NULL,
   `rep_quest_01` int NOT NULL,
   `quest_02` int NOT NULL,
