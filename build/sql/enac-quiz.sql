@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : mysql
--- Généré le : mer. 03 mai 2023 à 08:57
+-- Généré le : jeu. 04 mai 2023 à 14:25
 -- Version du serveur : 8.0.33
 -- Version de PHP : 8.1.17
 
@@ -198,47 +198,20 @@ CREATE TABLE `session` (
   `id_session` int NOT NULL,
   `pseudo` varchar(32) NOT NULL,
   `score` int NOT NULL,
-  `difficulty` int NOT NULL,
-  `quest_01` int NOT NULL,
-  `rep_quest_01` int NOT NULL,
-  `quest_02` int NOT NULL,
-  `rep_quest_02` int NOT NULL,
-  `quest_03` int NOT NULL,
-  `rep_quest_03` int NOT NULL,
-  `quest_04` int NOT NULL,
-  `rep_quest_04` int NOT NULL,
-  `quest_05` int NOT NULL,
-  `rep_quest_05` int NOT NULL,
-  `quest_06` int NOT NULL,
-  `rep_quest_06` int NOT NULL,
-  `quest_07` int NOT NULL,
-  `rep_quest_07` int NOT NULL,
-  `quest_08` int NOT NULL,
-  `rep_quest_08` int NOT NULL,
-  `quest_09` int NOT NULL,
-  `rep_quest_09` int NOT NULL,
-  `quest_10` int NOT NULL,
-  `rep_quest_10` int NOT NULL,
-  `quest_11` int NOT NULL,
-  `rep_quest_11` int NOT NULL,
-  `quest_12` int NOT NULL,
-  `rep_quest_12` int NOT NULL,
-  `quest_13` int NOT NULL,
-  `rep_quest_13` int NOT NULL,
-  `quest_14` int NOT NULL,
-  `rep_quest_14` int NOT NULL,
-  `quest_15` int NOT NULL,
-  `rep_quest_15` int NOT NULL,
-  `quest_16` int NOT NULL,
-  `rep_quest_16` int NOT NULL,
-  `quest_17` int NOT NULL,
-  `rep_quest_17` int NOT NULL,
-  `quest_18` int NOT NULL,
-  `rep_quest_18` int NOT NULL,
-  `quest_19` int NOT NULL,
-  `rep_quest_19` int NOT NULL,
-  `quest_20` int NOT NULL,
-  `rep_quest_20` int NOT NULL
+  `fk_difficulty` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `session_question`
+--
+
+CREATE TABLE `session_question` (
+  `id_session_question` int NOT NULL,
+  `fk_session` int NOT NULL,
+  `fk_question` int NOT NULL,
+  `id_rep` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -275,7 +248,16 @@ ALTER TABLE `question`
 -- Index pour la table `session`
 --
 ALTER TABLE `session`
-  ADD PRIMARY KEY (`id_session`);
+  ADD PRIMARY KEY (`id_session`),
+  ADD KEY `session_difficulty` (`fk_difficulty`);
+
+--
+-- Index pour la table `session_question`
+--
+ALTER TABLE `session_question`
+  ADD PRIMARY KEY (`id_session_question`),
+  ADD KEY `fk_session` (`fk_session`),
+  ADD KEY `fk_question` (`fk_question`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -312,6 +294,12 @@ ALTER TABLE `session`
   MODIFY `id_session` int NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `session_question`
+--
+ALTER TABLE `session_question`
+  MODIFY `id_session_question` int NOT NULL AUTO_INCREMENT;
+
+--
 -- Contraintes pour les tables déchargées
 --
 
@@ -321,6 +309,19 @@ ALTER TABLE `session`
 ALTER TABLE `question`
   ADD CONSTRAINT `question_category` FOREIGN KEY (`fk_category`) REFERENCES `category` (`id_category`),
   ADD CONSTRAINT `question_difficulty` FOREIGN KEY (`fk_difficulty`) REFERENCES `difficulty` (`id_difficulty`);
+
+--
+-- Contraintes pour la table `session`
+--
+ALTER TABLE `session`
+  ADD CONSTRAINT `session_difficulty` FOREIGN KEY (`fk_difficulty`) REFERENCES `difficulty` (`id_difficulty`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Contraintes pour la table `session_question`
+--
+ALTER TABLE `session_question`
+  ADD CONSTRAINT `session_question_question` FOREIGN KEY (`fk_question`) REFERENCES `question` (`id_question`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `session_question_session` FOREIGN KEY (`fk_session`) REFERENCES `session` (`id_session`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
