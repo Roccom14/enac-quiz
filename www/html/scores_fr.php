@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr-FR">
 <head>
-	<title>Login - ENAC-Quiz !</title>
+	<title>Scores - ENAC-Quiz !</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -26,21 +26,24 @@
 	</header>
 	<main>
 		<div class="content">
-			<form action="" method="POST">
-				<table class="login">
-					<h2>Connection admin :</h2>
-					<tr>
-						<td><label for="user">Utilisateur</label></td>
-						<td><input type="text" name="user" id="user" placeholder="johndoe69" required/></td>
-					</tr>
-					<tr>
-						<td><label for="pwd">Mot de passe</label></td>
-						<td><input type="password" name="pwd" id="pwd" required/></td>
-					</tr>
-				</table>
-				<br>
-				<input type="submit" name="login" value="Connection">
-			  </form>
+			<h1>Scores</h1>
+			<?php
+				require_once('../php/config.php');
+
+				// Récupération des scores depuis la base de données
+				$sql = "SELECT pseudo, score FROM `session` ORDER BY score DESC";
+				$resultat = $pdo->query($sql);
+			?>
+
+			<table class="score">
+				<tr>
+					<th>Utilisateur</th>
+					<th>Score</th>
+				</tr>
+				<?php foreach ($resultat as $ligne) {
+						echo "<tr><td>" . $ligne['pseudo'] . "</td><td>" . $ligne['score'] . "</td></tr>";
+				}?>
+			</table>
 		</div>
 	</main>
 	<footer>
