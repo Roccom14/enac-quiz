@@ -17,14 +17,8 @@ echo <<<EOT
     		<nav class="navtop">
 				<div class="container">
 					<a href="/index.php"><img src="/media/epfl.jpg" alt="Logo EPFL" class="logo"></a>
-					<a href="/php/scores_fr.php">Scores</a>
+					<a href="/php/scores.php">Scores</a>
 					<a href="/php/logout.php">Déconnexion</a>
-				</div>
-				<div class="language-selector">
-					<select name="language" id="language">
-                    	<option value="FR">FR</option>
-				    	<option value="EN">EN</option>
-					</select>
 				</div>
     		</nav>
 		</header>
