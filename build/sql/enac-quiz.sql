@@ -211,7 +211,7 @@ CREATE TABLE `session_question` (
   `id_session_question` int NOT NULL,
   `fk_session` int NOT NULL,
   `fk_question` int NOT NULL,
-  `id_rep` int NOT NULL
+  `id_rep` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
