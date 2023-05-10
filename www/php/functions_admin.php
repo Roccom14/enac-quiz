@@ -17,7 +17,6 @@ echo <<<EOT
     		<nav class="navtop">
 				<div class="container">
 					<a href="/index.php"><img src="/media/epfl.jpg" alt="Logo EPFL" class="logo"></a>
-					<a href="/php/new_test_fr.php">Nouveau test</a>
 					<a href="/php/scores_fr.php">Scores</a>
 					<a href="/php/logout.php">Déconnexion</a>
 				</div>
