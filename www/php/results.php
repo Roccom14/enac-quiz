@@ -20,9 +20,6 @@ $stmt->bindParam('session_id', $session_id, PDO::PARAM_INT);
 $stmt->execute();
 $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Affichage du score
-echo '<h2>Votre score: ' . $score . '/' . count($questions) . '</h2>';
-
 // Affichage de la liste des questions posées avec les réponses données par l'utilisateur et les réponses correctes
 echo '<ol>';
 foreach ($questions as $question) {
@@ -39,6 +36,9 @@ foreach ($questions as $question) {
     echo '</li>';
 }
 echo '</ol>';
+
+// Affichage du score
+echo '<h2>Votre score: ' . $score . '/' . count($questions) . '</h2>';
 
 // Enregistrement du score dans la base de données
 $stmt = $pdo->prepare('UPDATE `session` SET `score` = :score WHERE `id_session` = :session_id');
